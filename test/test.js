@@ -41,3 +41,15 @@ test('supports arbitrary objects', function (t) {
   t.equal(jsStringEscape(''), '')
   t.end()
 })
+
+test('option to exclude double quote marks from the escaping', function (t) {
+  t.equal(jsStringEscape('"Hello World!"', { excludeDoubleQuote : true }), '"Hello World!"')
+  t.equal(jsStringEscape("'Hello World!'", { excludeDoubleQuote : true }), "\\'Hello World!\\'")
+  t.end()
+}
+
+test('option to exclude single quote marks from the escaping', function (t) {
+  t.equal(jsStringEscape("'Hello World!'", { excludeSingleQuote : true }), "'Hello World!'")
+  t.equal(jsStringEscape('"Hello World!"', { excludeSingleQuote : true }), '\\"Hello World!\\"')
+  t.end()
+}
