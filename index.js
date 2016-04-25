@@ -1,6 +1,21 @@
 module.exports = function (string, options) {
   var regex = /["'\\\n\r\u2028\u2029]/g;
 
+  if (options) {
+    regex = '[';
+
+    if (!options.excludeDoubleQuote) {
+      regex += '"';
+    }
+
+    if (!options.excludeSingleQuote) {
+      regex += "'";
+    }
+
+    regex = '\\\n\r\u2028\u2029]';
+    regex = new RegExp(regex, 'g');
+  }
+
   return ('' + string).replace(regex, escapeCharacter);
 
   function escapeCharacter (character) {
