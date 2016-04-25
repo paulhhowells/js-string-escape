@@ -42,3 +42,18 @@ against all Unicode code points.
 
 Note that the returned string is not necessarily valid JSON, since JSON
 disallows control characters, and `\'` is illegal in JSON.
+
+## Options
+If you need to exclude single or double quote marks from the escaping then you may provide an optional second `options` parameter.  e.g.:
+```js
+jsStringEscape = require('js-string-escape');
+string = '<p class="show">' + "'single'</p>";
+options = { excludeDoubleQuote : true };
+output = jsStringEscape(string, options);
+console.log(output); // <p class="show">\'single\'</p>
+```
+The `options` parameter should be an object, with attributes to tailor the escaping.
+* When `options` has the attribute `excludeDoubleQuote` set to true then double quote marks `"` will not be escaped.
+* When `options` has the attribute `excludeSingleQuote` set to true then single quote marks `'` will not be escaped.
+
+These options may be useful when it is known that the escaped string returned by js-string-escape will only be used within single or double quote marks.
