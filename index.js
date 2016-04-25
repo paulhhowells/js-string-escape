@@ -1,5 +1,7 @@
-  return ('' + string).replace(/["'\\\n\r\u2028\u2029]/g, function (character) {
 module.exports = function (string, options) {
+  return ('' + string).replace(/["'\\\n\r\u2028\u2029]/g, escapeCharacter);
+
+  function escapeCharacter (character) {
     // Escape all characters not included in SingleStringCharacters and
     // DoubleStringCharacters on
     // http://www.ecma-international.org/ecma-262/5.1/#sec-7.8.4
@@ -18,5 +20,5 @@ module.exports = function (string, options) {
       case '\u2029':
         return '\\u2029'
     }
-  })
+  }
 }
