@@ -1,5 +1,7 @@
 module.exports = function (string, options) {
-  return ('' + string).replace(/["'\\\n\r\u2028\u2029]/g, escapeCharacter);
+  var regex = /["'\\\n\r\u2028\u2029]/g;
+
+  return ('' + string).replace(regex, escapeCharacter);
 
   function escapeCharacter (character) {
     // Escape all characters not included in SingleStringCharacters and
