@@ -1,5 +1,9 @@
 # master
 
+# 1.0.2
+
+* Added an options parameter
+
 # 1.0.1
 
 * Exclude unused files from npm distribution
