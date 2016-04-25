@@ -12,7 +12,7 @@ module.exports = function (string, options) {
       regex += "'";
     }
 
-    regex = '\\\n\r\u2028\u2029]';
+    regex += '\\\n\r\u2028\u2029]';
     regex = new RegExp(regex, 'g');
   }
 
